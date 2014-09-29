@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FortuneTeller </title>
+<style type="text/css">
+body {
+	text-align: center;
+	background-color:#633;
+		
+}
+#button{width:90px; height:90px;
+		background-color:#60C;
+		color:#FFF; border:solid 2px #FFF;
+		border-radius:30px;
+}
+</style>
+</head>
+<body>
+    <div id="fortune=teller">
+<button id="button" onclick="shake()">Shake</button>
+   	 <p id="question"></p>
+   	 <p id="answer"></p>
+    <div>
+</body>
+
+<script>
+    var fortuneTeller = {
+        promptText: "Ask me a question.",
+        answerType: "image",
+	
+        answers: [
+            "images/yes.png",
+            "images/no.png",
+            "images/maybe.jpg",
+			"images/ruok.jpg",
+			"images/dont.jpg",
+		
+      
+        ],
+        getAnswer: function(){
+            var min = 1;
+            var max = this.answers.length;
+            var index = Math.floor(Math.random() * (max - min + 1)) + min;
+            return this.answers[index-1];
+        }
+    };
+    console.log(fortuneTeller.getAnswer());
+    function shake(){
+        var question = prompt(fortuneTeller.promptText);
+        var questionText = document.getElementById('question');
+        questionText.innerHTML = question;
+        var randomAnswer = fortuneTeller.getAnswer();
+        var fortuneText = document.getElementById('answer');
+        fortuneText.innerHTML = '<embed src="' + randomAnswer +'"/>';
+    }
+    	function getFileExtension(filename) {
+return filename.split('.').pop();
+}
+
+
+</script>
+</body>
+
+</html>
